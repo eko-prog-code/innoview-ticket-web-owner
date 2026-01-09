@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import { ethers } from "ethers";
-import { Wallet, LogOut } from "lucide-react";
+import {
+  Wallet,
+  LogOut,
+  Hand,
+  ExternalLink
+} from "lucide-react";
 
 import { getReadContract, getWriteContract } from "./blockchain/contract";
 import TicketForm from "./components/TicketForm";
@@ -22,7 +27,7 @@ export default function App() {
   const isOwner =
     account && owner && account.toLowerCase() === owner.toLowerCase();
 
-  /* ================= LOAD DATA (PUBLIC) ================= */
+  /* ================= LOAD DATA ================= */
   const loadTickets = async () => {
     try {
       const contract = getReadContract();
@@ -84,17 +89,35 @@ export default function App() {
     <div className="container">
       {/* ================= HEADER ================= */}
       <header>
-        <div>
+        <div className="header-left">
           <h2>🎟 Ticket InnoView Academy</h2>
+
           <p className="subtitle">
             Basic Programmer – Mengenal Teknologi Web
           </p>
 
+          {/* LINE DECORATION */}
+          <div className="title-line" />
+
           <p className="scarcity">
             Scarcity Ticket = Blockchain for Ticket Development
             <br />
-            <span>Data immutable • Limited • Tidak dapat diubah (tetap)</span>
+            <span>
+              Data immutable • Limited • Tidak dapat diubah (tetap)
+            </span>
           </p>
+
+          {/* EXTERNAL LINK */}
+          <a
+            className="blockchain-link"
+            href="https://eth-sepolia.blockscout.com/address/0x92228f213CCE1b317f112bd09C70E03e73c77095"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Hand size={16} />
+            <span>View Blockchain</span>
+            <ExternalLink size={14} />
+          </a>
         </div>
 
         {!account ? (

@@ -205,3 +205,28 @@ a {
   color: #94a3b8;
   font-size: 12px;
 }
+
+.title-line {
+  width: 80px;
+  height: 3px;
+  margin: 6px 0 10px;
+  background: linear-gradient(90deg, #38bdf8, transparent);
+  border-radius: 2px;
+}
+
+.blockchain-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  font-size: 13px;
+  color: #38bdf8;
+  text-decoration: none;
+  opacity: 0.85;
+}
+
+.blockchain-link:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
