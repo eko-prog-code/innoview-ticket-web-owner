@@ -11,17 +11,328 @@ body {
   padding: 16px;
 }
 
-header {
+/* ================= HEADER CARD BARU ================= */
+.header-card {
+  background: linear-gradient(135deg, #0f172a, #020617);
+  border-radius: 18px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 
+    0 10px 40px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(59, 130, 246, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  gap: 12px;
+  align-items: flex-start; /* Ubah ke flex-start */
   flex-wrap: wrap;
+  gap: 24px;
+  position: relative;
+  overflow: hidden;
 }
 
-h2 {
-  margin: 0;
+.header-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #3b82f6, transparent);
 }
+
+.header-card-left {
+  flex: 1;
+  min-width: 300px;
+}
+
+.header-card-right {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-end; /* Rata kanan */
+  width: 100%;
+  max-width: 320px;
+}
+
+/* TITLE SECTION */
+.header-title-section {
+  margin-bottom: 0;
+}
+
+.header-title-section h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  background: linear-gradient(90deg, #38bdf8, #60a5fa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 6px;
+}
+
+.header-title-section .subtitle {
+  font-size: 14px;
+  opacity: 0.8;
+  margin-top: 4px;
+  margin-bottom: 10px;
+}
+
+.header-title-section .title-line {
+  width: 100px;
+  height: 3px;
+  margin: 8px 0 14px;
+  background: linear-gradient(90deg, #38bdf8, transparent);
+  border-radius: 2px;
+}
+
+.header-title-section .scarcity {
+  font-size: 13px;
+  color: #38bdf8;
+  line-height: 1.5;
+}
+
+.header-title-section .scarcity span {
+  color: #94a3b8;
+  font-size: 12px;
+}
+
+/* WALLET SECTION - POSISI KANAN BAWAH */
+.wallet-section {
+  width: 100%;
+  max-width: 280px;
+  margin-left: auto; /* Dorong ke kanan */
+}
+
+/* BLOCKCHAIN LINK CARD - POSISI KIRI BAWAH */
+.blockchain-link-card {
+  display: block;
+  text-decoration: none;
+  background: rgba(30, 41, 59, 0.6);
+  border-radius: 12px;
+  padding: 14px 18px;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 280px;
+  position: relative;
+  overflow: hidden;
+  margin-right: auto; /* Dorong ke kiri */
+}
+
+.blockchain-link-card:hover {
+  background: rgba(30, 41, 59, 0.8);
+  border-color: #3b82f6;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.15);
+}
+
+.blockchain-link-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #38bdf8, #60a5fa);
+}
+
+.blockchain-link-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #38bdf8;
+  font-weight: 500;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.blockchain-link-content svg {
+  flex-shrink: 0;
+}
+
+.blockchain-link-desc {
+  font-size: 12px;
+  color: #94a3b8;
+  margin-left: 28px;
+}
+
+/* TOMBOL WALLET CONNECT */
+.btn-wallet-connect {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: white;
+  border: none;
+  padding: 16px 20px;
+  border-radius: 14px;
+  cursor: pointer;
+  font-weight: 500;
+  width: 100%;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+.btn-wallet-connect:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+  background: linear-gradient(135deg, #60a5fa, #2563eb);
+}
+
+.wallet-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.wallet-title {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.wallet-desc {
+  font-size: 12px;
+  opacity: 0.9;
+  font-weight: 400;
+}
+
+/* ACCOUNT CONNECTED */
+.account-connected {
+  background: rgba(30, 41, 59, 0.6);
+  border-radius: 14px;
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  width: 100%;
+}
+
+.account-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.account-status .owner {
+  color: #22c55e;
+}
+
+.account-status .guest {
+  color: #facc15;
+}
+
+.account-address {
+  background: rgba(15, 23, 42, 0.8);
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin: 10px 0;
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  word-break: break-all;
+}
+
+.btn-disconnect {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  width: 100%;
+  transition: all 0.2s ease;
+}
+
+.btn-disconnect:hover {
+  background: linear-gradient(135deg, #f87171, #ef4444);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+/* ================= LAYOUT KHUSUS UNTUK PC ================= */
+@media (min-width: 768px) {
+  .header-card {
+    position: relative;
+    min-height: 200px;
+  }
+  
+  /* Membuat kedua tombol berada di bagian bawah card */
+  .header-card-right {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    width: calc(100% - 48px); /* Kurangi padding */
+    flex-direction: row; /* Ubah ke row untuk horizontal */
+    justify-content: space-between; /* Sebar ke kiri dan kanan */
+    align-items: flex-end; /* Rata bawah */
+    max-width: none; /* Hapus batas maksimum */
+  }
+  
+  .wallet-section,
+  .blockchain-link-card {
+    max-width: 280px;
+    margin: 0; /* Reset margin */
+  }
+  
+  .wallet-section {
+    order: 2; /* Wallet di kanan */
+  }
+  
+  .blockchain-link-card {
+    order: 1; /* Blockchain di kiri */
+  }
+}
+
+/* ================= RESPONSIVE UNTUK MOBILE ================= */
+@media (max-width: 767px) {
+  .header-card {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 20px;
+  }
+  
+  .header-card-right {
+    width: 100%;
+    max-width: none;
+    align-items: stretch;
+    margin-top: 20px;
+    gap: 16px;
+  }
+  
+  .wallet-section,
+  .blockchain-link-card {
+    max-width: 100%;
+    width: 100%;
+    margin: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-card {
+    padding: 16px;
+  }
+  
+  .header-title-section h2 {
+    font-size: 20px;
+  }
+  
+  .blockchain-link-card,
+  .account-connected {
+    padding: 14px;
+  }
+}
+
+/* ================= KODE CSS LAINNYA TETAP SAMA ================= */
+/* Hanya menambahkan di atas, kode di bawah ini tetap sama seperti sebelumnya */
 
 button {
   display: flex;
@@ -53,6 +364,7 @@ button {
   box-shadow: 0 0 0 1px #1e293b;
 }
 
+/* INPUT GENERAL - tetap sama */
 input {
   width: 100%;
   padding: 10px;
@@ -63,17 +375,85 @@ input {
   box-shadow: 0 0 0 1px #1e293b;
 }
 
+/* PERBAIKAN KHUSUS UNTUK PLACEHOLDER PENCARIAN */
 .search {
-  max-width: 260px;
+  max-width: 480px;
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: none;
+  background: #020617;
+  color: white;
+  box-shadow: 0 0 0 1px #1e293b;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  display: block;
 }
 
+/* Styling placeholder */
+.search::placeholder {
+  color: #94a3b8;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* Hover dan focus state */
+.search:hover,
+.search:focus {
+  box-shadow: 0 0 0 2px #3b82f6;
+  outline: none;
+}
+
+/* PERBAIKAN UTAMA: TENGAHKAN HANYA DI PC */
 .list-header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   margin: 16px 0;
   gap: 10px;
   flex-wrap: wrap;
+}
+
+/* Desktop PC (≥1024px) - POSISI TENGAH */
+@media (min-width: 1024px) {
+  .list-header {
+    justify-content: center;
+  }
+  
+  .search {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}
+
+/* Untuk semua device di bawah PC - POSISI KIRI */
+@media (max-width: 1023px) {
+  .list-header {
+    justify-content: flex-start;
+  }
+  
+  .search {
+    max-width: 100%;
+    margin: 0;
+  }
+  
+  /* Tablet */
+  @media (min-width: 768px) {
+    .search {
+      max-width: 400px;
+    }
+  }
+  
+  /* Mobile */
+  @media (max-width: 640px) {
+    .search {
+      max-width: 100%;
+      padding: 10px 12px;
+    }
+    
+    .list-header {
+      justify-content: center;
+    }
+  }
 }
 
 .list {
@@ -156,7 +536,7 @@ a {
 
 .stat-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 🔥 SELALU 1 BARIS */
+  grid-template-columns: repeat(3, 1fr);
   gap: 12px;
   margin: 16px 0 24px;
 }
@@ -229,4 +609,3 @@ a {
   opacity: 1;
   text-decoration: underline;
 }
-

@@ -4,7 +4,9 @@ import {
   Wallet,
   LogOut,
   Hand,
-  ExternalLink
+  Fingerprint,
+  ExternalLink,
+  Shield
 } from "lucide-react";
 
 import { getReadContract, getWriteContract } from "./blockchain/contract";
@@ -87,56 +89,73 @@ export default function App() {
   /* ================= UI ================= */
   return (
     <div className="container">
-      {/* ================= HEADER ================= */}
-      <header>
-        <div className="header-left">
-          <h2>🎟 Ticket InnoView Academy</h2>
+      {/* ================= HEADER CARD BARU ================= */}
+      <div className="header-card">
+        <div className="header-card-left">
+          {/* JUDUL */}
+          <div className="header-title-section">
+            <h2>🎟 Ticket InnoView Academy</h2>
+            <p className="subtitle">
+              Materi: Basic Programmer – Mengenal Teknologi Web
+            </p>
 
-          <p className="subtitle">
-            Basic Programmer – Mengenal Teknologi Web
-          </p>
+            <p className="scarcity">
+              Scarcity Ticket: Sistem blockchain untuk tiket yang terbatas, data tetap, dan tidak dapat diubah.
+              <br />
+            </p>
+          </div>
+        </div>
 
-          {/* LINE DECORATION */}
-          <div className="title-line" />
-
-          <p className="scarcity">
-            Scarcity Ticket = Blockchain for Ticket Development
-            <br />
-            <span>
-              Data immutable • Limited • Tidak dapat diubah (tetap)
-            </span>
-          </p>
-
-          {/* EXTERNAL LINK */}
+        <div className="header-card-right">
+          {/* KANAN: WALLET SECTION */}
+          <div className="wallet-section">
+            {!account ? (
+              <button onClick={connectWallet} className="btn-wallet-connect">
+                <Wallet size={18} />
+                <div className="wallet-text">
+                  <span className="wallet-title">Connect Wallet</span>
+                  <span className="wallet-desc">Metamask / Browser Wallet</span>
+                </div>
+              </button>
+            ) : (
+              <div className="account-connected">
+                <div className="account-status">
+                  <Shield size={16} />
+                  <span className={isOwner ? "owner" : "guest"}>
+                    {isOwner ? "Owner" : "Account Tamu"}
+                  </span>
+                </div>
+                <div className="account-address">
+                  <small>{account.slice(0, 6)}...{account.slice(-4)}</small>
+                </div>
+                <button onClick={disconnectWallet} className="btn-disconnect">
+                  <LogOut size={14} /> Disconnect
+                </button>
+              </div>
+            )}
+          </div>
+          
+          {/* KIRI: VIEW BLOCKCHAIN LINK - Dipindah ke kiri bawah */}
           <a
-            className="blockchain-link"
+            className="blockchain-link-card"
             href="https://eth-sepolia.blockscout.com/address/0x92228f213CCE1b317f112bd09C70E03e73c77095"
             target="_blank"
             rel="noreferrer"
           >
-            <Hand size={16} />
-            <span>View Blockchain</span>
-            <ExternalLink size={14} />
+            <div className="blockchain-link-content">
+              <Hand size={18} />
+              <span>View Blockchain</span>
+              <Fingerprint size={18} />
+              <ExternalLink size={16} />
+            </div>
+            <div className="blockchain-link-desc">
+              Lihat transaksi di blockchain explorer
+            </div>
           </a>
         </div>
+      </div>
 
-        {!account ? (
-          <button onClick={connectWallet} className="btn-primary">
-            <Wallet size={16} /> Connect Wallet
-          </button>
-        ) : (
-          <div className="account-box">
-            <span className={isOwner ? "owner" : "guest"}>
-              {isOwner ? "Owner" : "Account Tamu"}
-            </span>
-            <small>{account}</small>
-            <button onClick={disconnectWallet} className="btn-danger">
-              <LogOut size={14} /> Disconnect
-            </button>
-          </div>
-        )}
-      </header>
-
+      {/* ================= AREA DI BAWAH HEADER (TETAP SAMA) ================= */}
       {/* ================= STAT ================= */}
       <TicketStat
         quota={TOTAL_QUOTA}
